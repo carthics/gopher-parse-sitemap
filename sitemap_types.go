@@ -6,12 +6,11 @@ type sitemapEntry struct {
 	Location           string `xml:"loc"`
 	LastModified       string `xml:"lastmod,omitempy"`
 	ParsedLastModified *time.Time
-	ChangeFrequency    Frequency `xml:"changefreq,omitempty"`
-	Priority           float32   `xml:"priority,omitempty"`
+	Priority           float32 `xml:"priority,omitempty"`
 }
 
 func newSitemapEntry() *sitemapEntry {
-	return &sitemapEntry{ChangeFrequency: Always, Priority: 0.5}
+	return &sitemapEntry{Priority: 0.5}
 }
 
 func (e *sitemapEntry) GetLocation() string {
@@ -23,10 +22,6 @@ func (e *sitemapEntry) GetLastModified() *time.Time {
 		e.ParsedLastModified = parseDateTime(e.LastModified)
 	}
 	return e.ParsedLastModified
-}
-
-func (e *sitemapEntry) GetChangeFrequency() Frequency {
-	return e.ChangeFrequency
 }
 
 func (e *sitemapEntry) GetPriority() float32 {

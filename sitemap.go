@@ -10,20 +10,6 @@ import (
 	"time"
 )
 
-// Frequency is a type alias for change frequency.
-type Frequency = string
-
-// Change frequency constants set describes how frequently a page is changed.
-const (
-	Always  Frequency = "always"  // A page is changed always
-	Hourly  Frequency = "hourly"  // A page is changed every hour
-	Daily   Frequency = "daily"   // A page is changed every day
-	Weekly  Frequency = "weekly"  // A page is changed every week
-	Monthly Frequency = "monthly" // A page is changed every month
-	Yearly  Frequency = "yearly"  // A page is changed every year
-	Never   Frequency = "never"   // A page is changed never
-)
-
 // Entry is an interface describes an element \ an URL in the sitemap file.
 // Keep in mind. It is implemented by a totally immutable entity so you should
 // minimize calls count because it can produce additional memory allocations.
@@ -45,7 +31,6 @@ const (
 type Entry interface {
 	GetLocation() string
 	GetLastModified() *time.Time
-	GetChangeFrequency() Frequency
 	GetPriority() float32
 }
 

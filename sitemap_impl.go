@@ -3,11 +3,14 @@ package sitemap
 import (
 	"encoding/xml"
 	"io"
+	"log"
 )
 
 func entryParser(decoder *xml.Decoder, se *xml.StartElement, consume EntryConsumer) error {
 	if se.Name.Local == "url" {
 		entry := newSitemapEntry()
+
+		log.Println(entry)
 
 		decodeError := decoder.DecodeElement(entry, se)
 		if decodeError != nil {

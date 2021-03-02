@@ -1,3 +1,3 @@
-module github.com/oxffaa/gopher-parse-sitemap
+module github.com/carthics/gopher-parse-sitemap
 
-go 1.13
+go 1.15
